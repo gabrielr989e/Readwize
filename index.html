@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Readwize</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Pantalla Principal -->
+  <div class="splash-screen">
+    <div class="logo-container">
+      <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" class="logo" id="logo">
+        <path d="M75 100 L50 60 Q40 50 50 40 L75 70 L100 40 Q110 50 100 60 L75 100 Z" fill="#4CAF50" />
+        <circle cx="75" cy="70" r="10" fill="#FFEB3B" opacity="0.8">
+          <animate attributeName="r" from="10" to="20" dur="1s" repeatCount="indefinite" />
+          <animate attributeName="opacity" from="0.8" to="0.1" dur="1s" repeatCount="indefinite" />
+        </circle>
+        <text x="75" y="120" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">RW</text>
+      </svg>
+      <h1 class="app-name">Readwize</h1>
+    </div>
+    <button class="btn-start">Comienza Ahora</button>
+  </div>
+
+  <!-- Página de Registro -->
+  <div id="register-page" class="hidden">
+    <div class="register-form">
+      <h2>Regístrate en Readwize</h2>
+      <form id="registerForm">
+        <input type="text" id="username" placeholder="Nombre de usuario" required>
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button type="submit" class="btn-register">Registrarse</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sección del Menú -->
+  <div id="new-menu-section" class="hidden">
+    <div class="menu">
+      <div class="menu-item">
+        <div class="icon">🏠</div>
+        <span>Inicio</span>
+      </div>
+      <div class="menu-item">
+        <div class="icon">📚</div>
+        <span>Mis Libros</span>
+      </div>
+      <div class="menu-item">
+        <div class="icon">🎯</div>
+        <span>Desafíos</span>
+      </div>
+      <div class="menu-item">
+        <div class="icon">🏅</div>
+        <span>Logros</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección del Inicio -->
+  <div id="inicio-section" class="hidden">
+    <header class="header">
+      <h1>¡Desafía tu mente, recompensa tu lectura!</h1>
+      <div class="streak">
+        <span>🔥 Racha: <span id="streak-count">0</span> días</span>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="stats">
+        <h2>Estadísticas Rápidas</h2>
+        <div class="stat">
+          <span class="value" id="books-read">0</span>
+          <p>Libros leídos</p>
+        </div>
+        <div class="stat">
+          <span class="value" id="total-minutes">0</span>
+          <p>Minutos leídos</p>
+        </div>
+        <div class="stat">
+          <span class="value" id="daily-goal">No cumplida</span>
+          <p>Meta diaria</p>
+        </div>
+      </section>
+
+      <section class="motivational">
+        <h2>Frase del día</h2>
+        <p id="motivational-quote">"La lectura es para la mente lo que el ejercicio es para el cuerpo."</p>
+      </section>
+
+      <button class="btn-start-reading">Comienza tu sesión de lectura</button>
+    </main>
+
+    <footer class="footer">
+      <p>¡Desafía tu mente, recompensa tu lectura!</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Navegar a la página de registro
+      document.querySelector('.btn-start').addEventListener('click', function () {
+        document.querySelector('.splash-screen').classList.add('hidden');
+        document.getElementById('register-page').classList.remove('hidden');
+      });
+
+      // Mostrar el menú después de registrarse
+      document.getElementById('registerForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (username && email && password) {
+          alert('Registro exitoso');
+          document.getElementById('register-page').classList.add('hidden');
+          document.getElementById('new-menu-section').classList.remove('hidden');
+        } else {
+          alert('Por favor completa todos los campos');
+        }
+      });
+
+      // Manejo de la racha
+      const streakCountEl = document.getElementById('streak-count');
+      let streakCount = parseInt(localStorage.getItem('streakCount')) || 0;
+      streakCountEl.textContent = streakCount;
+
+      // Frase motivacional aleatoria
+      const motivationalQuoteEl = document.getElementById('motivational-quote');
+      const quotes = [
+        "La lectura es para la mente lo que el ejercicio es para el cuerpo.",
+        "Un libro es un sueño que tienes en tus manos.",
+        "Hoy es un buen día para comenzar un nuevo libro."
+      ];
+      motivationalQuoteEl.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+
+      // Función para cambiar entre secciones
+      function navigateToSection(sectionId) {
+        const sections = document.querySelectorAll('.hidden, .visible');
+        sections.forEach(section => section.classList.add('hidden'));
+
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+          targetSection.classList.remove('hidden');
+          targetSection.classList.add('visible');
+        }
+      }
+
+      // Agregar evento al icono de Inicio
+      document.querySelector('.menu-item:nth-child(1)').addEventListener('click', () => {
+        navigateToSection('inicio-section');
+      });
+
+      // Botón para iniciar sesión de lectura
+      document.querySelector('.btn-start-reading').addEventListener('click', function () {
+        streakCount++;
+        localStorage.setItem('streakCount', streakCount);
+        alert('¡Has comenzado una nueva sesión de lectura!');
+        streakCountEl.textContent = streakCount;
+      });
+    });
+  </script>
+</body>
+</html>
+
+  
+
+
+<!-- Sección de Mis Libros -->
+<div id="mis-libros-section" class="hidden">
+  <header class="header">
+    <h1>Mis Libros 📚</h1>
+  </header>
+
+  <main class="content">
+    <section class="library">
+      <h2>Biblioteca Personalizada</h2>
+      <div class="book-list">
+        <!-- Aquí se mostrarán los libros -->
+      </div>
+    </section>
+
+    <section class="add-book">
+      <h2>Agregar un Nuevo Libro</h2>
+      <form id="addBookForm">
+        <input type="text" id="book-title" placeholder="Título del libro" required>
+        <input type="text" id="book-author" placeholder="Autor" required>
+        <input type="text" id="book-genre" placeholder="Género" required>
+        <button type="submit" class="btn-add-book">Agregar Libro</button>
+      </form>
+      <p class="info">También puedes escanear el código QR o ISBN para agregar libros.</p>
+      <button id="qr-scan" class="btn-qr-scan">Escanear QR</button>
+    </section>
+
+    <section class="progress">
+      <h2>Progreso de Lectura</h2>
+      <div class="progress-list">
+        <!-- Aquí se mostrarán los libros con progreso -->
+      </div>
+    </section>
+
+    <section class="notes">
+      <h2>Notas y Resúmenes</h2>
+      <textarea id="notes-textarea" placeholder="Escribe tus notas o resúmenes aquí..."></textarea>
+    </section>
+
+    <section class="favorites">
+      <h2>Libros Favoritos</h2>
+      <div class="favorite-books">
+        <!-- Aquí se mostrarán los libros favoritos -->
+      </div>
+    </section>
+  </main>
+</div>
+
+
+
+<!-- Sección de Logros -->
+<div id="logros-section" class="hidden">
+  <header class="header">
+    <h1>Logros 🏅</h1>
+  </header>
+
+  <main class="content">
+    <section class="badges">
+      <h2>Insignias y Medallas</h2>
+      <div class="badge-list">
+        <!-- Medalla Bronce - 5 días -->
+        <div class="badge-card" id="badge-bronze">
+          <div class="badge-icon">
+            <i class="fas fa-medal"></i> <!-- Icono de medalla -->
+          </div>
+          <p><strong>Bronce</strong> - 5 días de lectura consecutiva</p>
+        </div>
+        <!-- Medalla Plata - 10 días -->
+        <div class="badge-card" id="badge-silver">
+          <div class="badge-icon">
+            <i class="fas fa-medal"></i> <!-- Icono de medalla -->
+          </div>
+          <p><strong>Plata</strong> - 10 días de lectura consecutiva</p>
+        </div>
+        <!-- Medalla Oro - 20 días -->
+        <div class="badge-card" id="badge-gold">
+          <div class="badge-icon">
+            <i class="fas fa-medal"></i> <!-- Icono de medalla -->
+          </div>
+          <p><strong>Oro</strong> - 20 días de lectura consecutiva</p>
+        </div>
+        <!-- Medalla Diamante - 30 días -->
+        <div class="badge-card" id="badge-diamond">
+          <div class="badge-icon">
+            <i class="fas fa-gem"></i> <!-- Icono de diamante -->
+          </div>
+          <p><strong>Diamante</strong> - 30 días de lectura consecutiva</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="completed-goals">
+      <h2>Metas Cumplidas</h2>
+      <ul>
+        <!-- Las metas cumplidas se agregarán aquí dinámicamente -->
+      </ul>
+    </section>
+
+    <section class="statistics">
+      <h2>Estadísticas Detalladas</h2>
+      <p>📊 Horas acumuladas de lectura: <span id="reading-hours">25</span> horas</p>
+      <p>📚 Género más leído: Ciencia Ficción</p>
+      <p>📅 Días con mayor actividad: Miércoles, Viernes</p>
+    </section>
+
+    <section class="featured-achievements">
+      <h2>Logros Destacados</h2>
+      <ul>
+        <!-- Logros destacados se agregarán aquí -->
+      </ul>
+    </section>
+  </main>
+</div>
+
+
+
+

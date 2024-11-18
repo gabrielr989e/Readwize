@@ -1,0 +1,605 @@
+/* Reset de estilos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fondo y tipografía general */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+/* Pantalla Principal */
+.splash-screen {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.app-name {
+  font-size: 36px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.btn-start, .btn-register {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn-start:hover, .btn-register:hover {
+  background-color: #45a049;
+}
+
+/* Registro */
+.register-form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Menú */
+.new-menu-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 30px;
+  color: #4CAF50;
+  margin-bottom: 5px;
+}
+
+.menu-item span {
+  font-size: 14px;
+  color: #333;
+}
+
+.menu-item:hover {
+  transform: scale(1.1);
+  color: #4CAF50;
+}
+
+/* Cabecera de la sección de inicio */
+.header {
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.streak {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Contenedor de progreso */
+.progress-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.badge {
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  width: 30%;
+}
+
+.badge span {
+  font-size: 30px;
+  display: block;
+}
+
+.badge.gold {
+  border-color: gold;
+}
+
+.badge.silver {
+  border-color: silver;
+}
+
+.badge.bronze {
+  border-color: #cd7f32;
+}
+
+.btn-start-reading {
+  background-color: #FF9800;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+}
+
+.btn-start-reading:hover {
+  background-color: #e68a00;
+}
+
+/* Pie de página */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+}
+/* Sección de Inicio */
+#inicio-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.streak {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Sección de Estadísticas */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.stat {
+  text-align: center;
+  font-size: 18px;
+}
+
+.stat .value {
+  font-size: 36px;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.stat p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Frase motivacional */
+.motivational {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #555;
+}
+
+.motivational h2 {
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+/* Botón para comenzar sesión */
+.btn-start-reading {
+  background-color: #FF9800;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.btn-start-reading:hover {
+  background-color: #e68a00;
+}
+
+/* Pie de página */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+}
+
+
+
+
+/* Estilo para la sección Mis Libros */
+#mis-libros-section {
+  background-color: #f4f4f9;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.content {
+  font-family: 'Arial', sans-serif;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.library, .add-book, .progress, .notes, .favorites {
+  margin-bottom: 30px;
+}
+
+.book-list, .progress-list, .favorite-books {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.book-item, .progress-item, .favorite-item {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 150px;
+  text-align: center;
+}
+
+.book-item img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 5px;
+}
+
+#addBookForm input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.btn-add-book, .btn-qr-scan {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.info {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+
+/* Estilo para la sección Desafíos */
+#desafios-section {
+  background-color: #f4f4f9;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.content {
+  font-family: 'Arial', sans-serif;
+  color: #555;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.challenge-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.challenge-card:hover {
+  transform: scale(1.05);
+}
+
+.challenge-card p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.challenge-card button {
+  background-color: #4caf50; /* Aquí va el color que combina con el logo */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.challenge-card button:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.rewards ul {
+  padding-left: 20px;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  #desafios-section {
+    padding: 20px;
+  }
+
+  .challenge-card {
+    padding: 15px;
+  }
+}
+
+
+
+/* Estilo para la sección de Logros */
+#logros-section {
+  background-color: #f4f4f9;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4CAF50; /* Color de logo verde */
+}
+
+.content {
+  font-family: 'Arial', sans-serif;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.badge-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 160px;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s;
+  border: 2px solid #ddd;
+}
+
+.badge-card:hover {
+  background-color: #e0f7e0; /* Color cuando se pasa el mouse */
+}
+
+.badge-card.achieved {
+  background-color: #4caf50; /* Verde para insignias logradas */
+  color: white;
+  transform: scale(1.1); /* Animación de agrandamiento */
+}
+
+.badge-card img {
+  max-width: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Estilos para los íconos dentro de las medallas */
+.badge-icon {
+  background-color: 🥉;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#badge-bronze .badge-icon {
+  background-color: #cd7f32; /* Bronce */
+}
+
+#badge-silver .badge-icon {
+  background-color: #c0c0c0; /* Plata */
+}
+
+#badge-gold .badge-icon {
+  background-color: #ffd700; /* Oro */
+}
+
+#badge-diamond .badge-icon {
+  background-color: #b9f2ff; /* Diamante */
+}
+
+.completed-goals ul, .featured-achievements ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.completed-goals li, .featured-achievements li {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+#reading-hours {
+  font-weight: bold;
+  color: #4CAF50; /* Color para resaltar las horas de lectura */
+}
+
+@keyframes rachaAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+.racha-animation {
+  animation: rachaAnimation 1.5s ease-in-out infinite;
+}
+
+
+
+
+
